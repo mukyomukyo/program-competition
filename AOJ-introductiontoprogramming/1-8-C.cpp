@@ -1,23 +1,22 @@
 #include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 int main(){
     vector<int> vec(26);
-    while (true){
-        char s;
-        cin >>s;
-        if (s='.'){
+    char s;
+    while ( cin >> s){
+        if (s =='.'){
             break;
         }
-        int num = s - 'a';
-        int num2 =s - 'A';
-        if (num>=0 && num<=25){
-            vec.at(num) += 1;
+        if (s>='a' && s<='z'){
+            vec.at(s-'a') ++;
         }
-        else if(num2>=0 && num2<=25){
-            vec.at(num2) += 1;
+        else if(s>='A' && s<='Z'){
+            vec.at(s-'A') ++;
         }
     }
     for(int i=0; i<26; i++){
-        printf("%c : %d\n", 97+i,vec.at(i));
+        printf("%c : %d\n", 'a'+i, vec.at(i));
     }
 }
