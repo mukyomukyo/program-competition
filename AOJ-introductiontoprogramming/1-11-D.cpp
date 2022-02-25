@@ -93,43 +93,50 @@ struct Dice{
 };
 
 int main(){
-    Dice d1;
-    Dice d2;
-    for (int i=0;i<6;i++){
-        cin >> d1.a[i];
+    int n;
+    cin >> n;
+    Dice d[n];
+    for (int i=0; i<n ;i++){
+        for (int j=0; j<6 ;j++){
+            cin >>d[i].a[j];
+        }
     }
-    for (int i=0;i<6;i++){
-        cin >> d2.a[i];
-    }
-    string answer ="No";
-    d1.makenum(d2.a[0], d2.a[1]);
-    for (int i=0; i<4;i++){
-        d1.roll('A');
-        for (int j =0; j<4 ;j++){
-            d1.roll('N');
-            if (d1.a[0]==d2.a[0] && d1.a[1]==d2.a[1]&& d1.a[2]==d2.a[2] && d1.a[3]==d2.a[3] && d1.a[4]==d2.a[4] && d1.a[5]==d2.a[5] ){
-                answer = "Yes";
+    string answer2 ="Yes";
+    for (int k=0; k<n; k++){
+        for (int l=k+1; l<n; l++){    
+            string answer ="No";
+            for (int i=0; i<4;i++){
+                d[l].roll('A');
+                for (int j =0; j<4 ;j++){
+                    d[l].roll('N');
+                    if (d[l].a[0]==d[k].a[0] && d[l].a[1]==d[k].a[1]&& d[l].a[2]==d[k].a[2] && d[l].a[3]==d[k].a[3] && d[l].a[4]==d[k].a[4] && d[l].a[5]==d[k].a[5] ){
+                        answer = "Yes";
+                    }
+                }
+            }
+            for (int i=0; i<4;i++){
+                d[l].roll('A');
+                for (int j =0; j<4 ;j++){
+                    d[l].roll('W');
+                    if (d[l].a[0]==d[k].a[0] && d[l].a[1]==d[k].a[1]&& d[l].a[2]==d[k].a[2] && d[l].a[3]==d[k].a[3] && d[l].a[4]==d[k].a[4] && d[l].a[5]==d[k].a[5] ){
+                        answer = "Yes";
+                    }
+                }
+            }
+            for (int i=0; i<4;i++){
+                d[l].roll('W');
+                for (int j =0; j<4 ;j++){
+                    d[l].roll('N');
+                    if (d[l].a[0]==d[k].a[0] && d[l].a[1]==d[k].a[1]&& d[l].a[2]==d[k].a[2] && d[l].a[3]==d[k].a[3] && d[l].a[4]==d[k].a[4] && d[l].a[5]==d[k].a[5] ){
+                        answer = "Yes";
+                    }
+                }
+            }
+            if (answer =="Yes"){
+                answer2 ="No";
             }
         }
     }
-    for (int i=0; i<4;i++){
-        d1.roll('A');
-        for (int j =0; j<4 ;j++){
-            d1.roll('W');
-            if (d1.a[0]==d2.a[0] && d1.a[1]==d2.a[1]&& d1.a[2]==d2.a[2] && d1.a[3]==d2.a[3] && d1.a[4]==d2.a[4] && d1.a[5]==d2.a[5] ){
-                answer = "Yes";
-            }
-        }
-    }
-    for (int i=0; i<4;i++){
-        d1.roll('W');
-        for (int j =0; j<4 ;j++){
-            d1.roll('N');
-            if (d1.a[0]==d2.a[0] && d1.a[1]==d2.a[1]&& d1.a[2]==d2.a[2] && d1.a[3]==d2.a[3] && d1.a[4]==d2.a[4] && d1.a[5]==d2.a[5] ){
-                answer = "Yes";
-            }
-        }
-    }
-    cout << answer << endl;
+    cout << answer2 << endl;
     return 0;
 }
