@@ -11,19 +11,19 @@ void dfs(int h,int w){
             int nw = w + wai[i][1];
             if(nh<0 || nh>=10 || nw<0 || nw>=10){
                 continue;
-            } 
+            }
             if(vec[nh][nw]=='x'){
                 continue;
             }
             dfs(nh,nw);
     }
-} 
+}
 int main(){
         for(int i=0;i<9;i++){
             string s;
             cin >>s;
             for(int j=0;j<9;j++){
-                vec[i][j] =s.at(j); 
+                vec[i][j] =s.at(j);
             }
         }
         string ans ="No";
